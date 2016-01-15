@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <title> HTML5 templating demo</title>
+        <style>
+            .templating-item-box{
+                height: 200px;
+                border: 2px soild #505050;
+                background-color: rgb(222,222,222);
+                
+            }
+            .align-right{
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <template>
+            <div class="template-item-box">
+                <h1 class="tItemName"></h1>
+                <h3 class="tItemDesc"></h3>
+                <p class="align-right">Quantity ordered: <span class="tQtyOrdered"></span></p>
+            
+            
+            </div>
+        </template>
+        <script>
+            var template = document.querySelector("template");
+            var clone = document.importNode(template.content, true);
+           
+            cloneTemplate(template,{tItemName:"Buddha Shaped Pears($9.00/Each) ",
+                                 tItemDesc:"We visit the country of China for our first fruit, and it is perhaps the most bizarre in all of the world. When we say Buddha shaped pears, we are not messing around at all. These pears look exactly like a Buddha statue, even down to the facial details.",
+                                   tQtyOrdered: Math.ceil(Math.random()*10)});
+            cloneTemplate(template,{tItemName:"Sekai Ichi Apples($21.00 Each)",
+                                 tItemDesc:"The name Sekai Ichi translates into English as “World’s Number One”. That’s a pretty bold statement, but these apples have backed it up.After celebrating the 40th birthday of the apples in 2014, they are still the most expensive in the entire world. The average fruit has a circumference of 15 inches, so their waist lines are almost bigger than some supermodels. They also weigh around two pounds each, so you can do some damage with them. Average apple cost at your local market? Around $0.85 each.",
+                                   tQtyOrdered: 12});
+            cloneTemplate(template,{tItemName:"Sembikiya Queen Strawberries($85.00/Pack Of 12)",
+                                 tItemDesc:"The Senbikiya Queen Strawberry package is perhaps the fanciest of all arrangements on this list. You have seen the perfect strawberry at your local market, the one that is red all the way through with a dark green leaf at the top and has the seeds of pure white popping out from the skin. It’s mouthwatering just thinking about it.",
+                                   tQtyOrdered: 1});
+             cloneTemplate(template,{tItemName:"Square Watermelon ($800.00/Each)",
+                                 tItemDesc:"Guess where these square watermelons are grown each year? If you guess the obvious choice of Japan, you would be right. In 2014, these square watermelons were finally shipped to countries outside of Japan, but they come at a high price. They are grown in a box, which forces them to take the square shape. That only works with fruit, so don’t try to make a square person.",
+                                   tQtyOrdered: 1});
+             cloneTemplate(template,{tItemName:"Pineapples From The Lost Gardens of Heligan($1,600/Each) ",
+                                 tItemDesc:"The Lost Gardens of Heligan is one of the most well known botanical spots in all of the United Kingdom. Pineapple pits aren’t quite common in Europe, as Heligan has the only one left in the entire continent. To keep the pit going, two giant mud structures are based in rotting manure to help the pineapples grow and stay ripe.",
+                                   tQtyOrdered: 1});
+             cloneTemplate(template,{tItemName:" Yubari Melon($23,000/Per Pair)",
+                                 tItemDesc:"Cantaloupe is one of those things that you either really love, or just absolutely detest. For those that do love the taste, then the Yubari King is the top of the line in the family of orange melons. You can only find these bad boys on the Hokkaido island near Sapporo, and the Yubari is a result of a hybrid between two other sweet cantaloupes.",
+                                   tQtyOrdered: 1});
+            
+            
+            
+            function injectTemplete(cloneNode,objDate){
+                for(var i in objDate){
+                    cloneNode.querySelector("."+i).innerHTML = objDate[i];
+                    
+            
+                }
+            }
+            function cloneTemplate(template, objDate){
+                var clone = document.importNode(template.content,true);
+                injectTemplete(clone,objDate);
+                document.body.appendChild(clone);
+            }
+        </script>
+        <button class="backgroud:rgb(202,60,60); border-radius: 4px; text-shadow: 0 1px 1px rgba(0,0,0, 0.2)">Checkout</butt>
+    
+    
+    </body>
+
+
+</html>
